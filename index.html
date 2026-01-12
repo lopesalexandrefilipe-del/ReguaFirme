@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Régua Firme | Construção Civil, Remodelações e Acabamentos em Guimarães</title>
-
+<link rel="icon" href="7.png" type="image/png">
 <meta name="description" content="Régua Firme é uma empresa de construção civil em Guimarães especializada em construção de casas novas, remodelações, capoto, pladur, pavimentos e acabamentos de qualidade.">
 
 <style>
@@ -25,57 +24,81 @@ body {
   scroll-behavior: smooth;
 }
 
-/* NAV */
-.nav-container {
-  display: flex;
-  justify-content: space-between; /* logo à esquerda, links à direita */
-  align-items: center;
-  max-width: 1200px;
-  margin: auto;
-}
+/* NAVBAR */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
   background: var(--cor-escura);
-  padding: 15px;
-  text-align: center;
+  padding: 10px 20px;
   z-index: 1000;
 }
 
-nav a {
-  color: white;
-  margin: 0 15px;
-  text-decoration: none;
-  font-weight: bold;
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-nav a:hover {
+.logo-nav {
+  height: 50px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
   color: var(--cor-principal);
 }
+
+/* Ícone de menu para telemóveis */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* RESPONSIVO */
 @media (max-width: 768px) {
-  .nav-container {
-    flex-direction: column;
-    gap: 10px;
-  }
   .nav-links {
-    display: flex;
+    position: absolute;
+    top: 70px;
+    left: -100%;
+    width: 100%;
     flex-direction: column;
-    align-items: center;
+    background: var(--cor-escura);
+    transition: 0.3s;
   }
+  .nav-links li {
+    margin: 15px 0;
+    text-align: center;
   }
-  .logo-nav {
-  height: 50px; /* ajusta o tamanho do logotipo */
-}
-  .nav-links a:hover {
-  color: var(--cor-principal);
+  .nav-links.active {
+    left: 0;
+  }
+  .menu-toggle {
+    display: block;
+  }
 }
 
 /* HEADER */
 header {
   height: 100vh;
   background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-    url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c");
+              url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -87,49 +110,68 @@ header {
 }
 
 header h1 {
-  font-size: 3.5rem;
+  font-size: 3rem;
   color: var(--cor-principal);
 }
 
-/* SEÇÕES GERAIS COM TEXTURA */
+header p {
+  font-size: 1.2rem;
+}
+
+/* SEÇÕES */
 section {
   padding: 90px 10%;
   border-radius: 15px;
   margin: 30px auto;
   max-width: 1200px;
-  background-size: cover;
-  background-position: center;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   color: #333;
 }
 
-/* Fundo com imagem + gradiente para legibilidade */
+/* Fundo com imagem + gradiente */
 .intro {
   background: linear-gradient(rgba(255,255,255,0.85), rgba(238,241,244,0.85)),
-    url("https://images.unsplash.com/photo-1581090700227-1e37b190418e");
+              url("7.png");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
 }
 
 #servicos {
   background: linear-gradient(rgba(255,255,255,0.85), rgba(253,246,240,0.85)),
-    url("https://images.unsplash.com/photo-1597000705232-87d6c9f1f5f5");
+              url("https://images.unsplash.com/photo-1597000705232-87d6c9f1f5f5");
+  background-size: cover;
+  background-position: center;
 }
 
 #sobre {
   background: linear-gradient(rgba(238,241,244,0.85), rgba(255,255,255,0.85)),
-    url("https://images.unsplash.com/photo-1604014237744-5bfffa3f8f60");
+              url("https://images.unsplash.com/photo-1604014237744-5bfffa3f8f60");
+  background-size: cover;
+  background-position: center;
 }
 
 #contactos {
-  background: linear-gradient(rgba(47,47,47,0.85), rgba(30,30,30,0.85)),
-    url("https://images.unsplash.com/photo-1621905252507-b35492cc74b4");
-  color: white;
+  background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+              url("7.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 90px 10%;
+  border-radius: 15px;
+  margin: 30px auto;
 }
 
 /* TITULOS */
 h2 {
   text-align: center;
   margin-bottom: 40px;
-  color: var(--cor-secundaria);
+  color: var(--cor-principal)
 }
 
 .centro {
@@ -201,85 +243,42 @@ h2 {
   transform: scale(1.05);
 }
 
-#contactos {
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.65),
-      rgba(0, 0, 0, 0.65)
-    ),
-    url("7.png"); /* substitui pela imagem de fundo */
-  background-size: small;
-  background-repeat: no-repeat;
-  background-position: center;
-  color: #ffffff;
-  padding: 90px 10%;
-  border-radius: 15px;
-  margin: 30px auto;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  display: flex;
-  justify-content: center; /* centraliza horizontalmente */
-  align-items: center;     /* centraliza verticalmente */
-  text-align: center;      /* garante alinhamento do texto */
-}
-
-.contact-container {
-  max-width: 600px;        /* largura máxima para centralizar melhor */
-}
-
-.contact-logo {
-  width: 100px;             /* tamanho do logotipo */
-  margin-bottom: 20px;
-  align-items: right;
-}
-
-
-
-/* Titulo dos Contactos */
-#contactos h2 {
-  color: #d4af37; /* muda a cor do título */
-  margin-bottom: 40px;
-    text-align: center; 
-}
-
-/* Parágrafos dentro dos contactos */
-#contactos p {
+/* CONTACTOS */
+.contact-container p {
   margin: 10px 0;
   line-height: 1.6;
-    text-align: center; 
-  color: #ffffff; /* podes alterar se quiseres outro contraste */
 }
-
 
 /* FOOTER */
 footer {
   background: var(--cor-escura);
   color: white;
-  
   text-align: center;
   padding: 25px;
   margin-top: 30px;
   border-radius: 0 0 15px 15px;
 }
-
 </style>
 </head>
-
 <body>
 
+<!-- NAVBAR -->
 <nav>
   <div class="nav-container">
-    <a href="#inicio" class="logo-link">
+    <a href="#inicio">
       <img src="7.png" alt="Régua Firme" class="logo-nav">
     </a>
-    <div class="nav-links">
-      <a href="#inicio">Início</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#sobre">Quem Somos</a>
-      <a href="#contactos">Contactos</a>
-    </div>
+    <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#sobre">Quem Somos</a></li>
+      <li><a href="#contactos">Contactos</a></li>
+    </ul>
   </div>
 </nav>
 
-
+<!-- HEADER -->
 <header id="inicio">
   <div>
     <h1>Régua Firme</h1>
@@ -287,39 +286,35 @@ footer {
   </div>
 </header>
 
-<section class="intro" style="background: linear-gradient(135deg, #fdf6f0, #eef1f4); padding: 90px 10%; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); text-align: center;">
-  <h2 style="color: var(--cor-secundaria); margin-bottom: 30px;">Excelência em Construção Civil</h2>
-  <p class="centro" style="max-width: 900px; margin: auto; line-height: 1.7; font-size: 1.1rem; color: #555;">
+<!-- INTRO -->
+<section class="intro">
+  <h2>Excelência em Construção Civil</h2>
+  <p class="centro">
     A <strong>Régua Firme</strong> é uma empresa de construção civil sediada em Guimarães,
     especializada na construção de casas novas, remodelações, capoto, pladur, acabamentos,
-    decorações, pintura, pavimentos, arranjos exteriores e outros serviços relacionados com
-    obras de construção e reabilitação.
+    decorações, pintura, pavimentos, arranjos exteriores e outros serviços relacionados.
   </p>
 </section>
+
+<!-- SERVIÇOS -->
 <section id="servicos">
   <h2>Os Nossos Serviços</h2>
-
   <div class="servicos">
     <div class="card">
       <img src="3.jpg" alt="Remodelações">
       <h3>Remodelações e Reabilitação</h3>
       <p>Remodelação total ou parcial de habitações, cozinhas e casas de banho. Reorganização de espaços interiores e reabilitação de edifícios antigos.</p>
     </div>
-
-  
-
     <div class="card">
       <img src="6.jpg" alt="Coberturas e Fachadas">
       <h3>Coberturas e Fachadas</h3>
       <p>Construção e reparação de telhados, impermeabilizações, aplicação de capoto (ETICS), revestimentos e pintura exterior.</p>
     </div>
-
     <div class="card">
       <img src="5.jpg" alt="Arranjos Exteriores">
       <h3>Arranjos Exteriores</h3>
       <p>Muros e vedações, pavimentos exteriores, garagens, anexos, terraplanagens e sistemas de drenagem.</p>
     </div>
-
     <div class="card">
       <img src="4.jpg" alt="Serviços Complementares">
       <h3>Serviços Complementares</h3>
@@ -328,15 +323,14 @@ footer {
   </div>
 </section>
 
+<!-- QUEM SOMOS -->
 <section id="sobre">
   <h2>Quem Somos</h2>
-
   <p class="centro">
     A Régua Firme é uma empresa de construção civil especializada no fino da construção,
     remodelações e reabilitação de edifícios. Trabalhamos com rigor, profissionalismo
     e atenção ao detalhe, garantindo qualidade em cada projeto.
   </p>
-
   <div class="sobre-galeria">
     <img src="1.jpg" alt="Trabalhos de construção">
     <img src="2.jpg" alt="Aplicação de capoto">
@@ -344,9 +338,9 @@ footer {
   </div>
 </section>
 
+<!-- CONTACTOS -->
 <section id="contactos">
   <div class="contact-container">
-    
     <h2>Contactos</h2>
     <p><strong>Morada:</strong> Largo do Eirado, nº 25, 4805-000 Donim, Guimarães</p>
     <p><strong>Telefone:</strong> 912 345 678</p>
@@ -355,13 +349,20 @@ footer {
   </div>
 </section>
 
-
+<!-- FOOTER -->
 <footer>
   <p>© 2026 Régua Firme – Construção Civil, Remodelações e Decoração</p>
-  <!-- Favicon / Logotipo no navegador -->
-<img src="7.png" alt="Régua Firme" class="contact-logo">
-
 </footer>
+
+<!-- JAVASCRIPT MENU -->
+<script>
+const mobileMenu = document.getElementById('mobile-menu');
+const navLinks = document.querySelector('.nav-links');
+
+mobileMenu.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+</script>
 
 </body>
 </html>
