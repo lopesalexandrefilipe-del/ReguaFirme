@@ -32,13 +32,16 @@ nav {
   background: var(--cor-escura);
   padding: 10px 20px;
   z-index: 1000;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .nav-container {
   max-width: 1200px;
-  margin: auto;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* logo à esquerda, links à direita */
   align-items: center;
 }
 
@@ -46,59 +49,38 @@ nav {
   height: 50px;
 }
 
+/* Links da navbar */
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
 }
 
-.nav-links a {
+.nav-links li a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 500;
+  font-size: 0.95rem;
   transition: color 0.3s;
 }
 
-.nav-links a:hover {
+.nav-links li a:hover {
   color: var(--cor-principal);
 }
 
-/* Ícone de menu para telemóveis */
-.menu-toggle {
-  display: none;
-  font-size: 28px;
-  color: #fff;
-  cursor: pointer;
-}
-
-/* RESPONSIVO */
+/* RESPONSIVO: mantém horizontal no mobile */
 @media (max-width: 768px) {
-    body {
-    overflow-x: hidden;
+  .nav-links {
+    flex-direction: row;
+    gap: 15px;
+    font-size: 0.9rem;
+    margin-right: 80px; /* empurra os links para a direita */
   }
 
-  .nav-links {
-      position: fixed;
-    top: 70px;
-    left: -100%;
-    width: 100%;
-    height: calc(100vh - 70px);
-    background: var(--cor-escura);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: left 0.3s ease;
-    z-index: 1000;
-  }
-  .nav-links li {
-    margin: 20px 0;
-    text-align: center;
-  }
-  .nav-links.active {
-    left: 0;
-  }
-  .menu-toggle {
-    display: block;
+  .logo-nav {
+    height: 45px;
   }
 }
 
@@ -115,6 +97,8 @@ header {
   text-align: center;
   color: white;
   padding: 0 20px;
+  width: 100%;
+  height: 100dvh; /* correto para mobile moderno */
 }
 
 header h1 {
@@ -179,7 +163,7 @@ section {
 h2 {
   text-align: center;
   margin-bottom: 40px;
-  color: var(--cor-principal)
+  color: var(--cor-principal);
 }
 
 .centro {
@@ -266,6 +250,8 @@ footer {
   margin-top: 30px;
   border-radius: 0 0 15px 15px;
 }
+
+
 </style>
 </head>
 <body>
@@ -276,7 +262,7 @@ footer {
     <a href="#inicio">
       <img src="7.png" alt="Régua Firme" class="logo-nav">
     </a>
-    <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+    
     <ul class="nav-links">
       <li><a href="#inicio">Início</a></li>
       <li><a href="#servicos">Serviços</a></li>
@@ -364,11 +350,14 @@ footer {
 
 <!-- JAVASCRIPT MENU -->
 <script>
-const mobileMenu = document.getElementById('mobile-menu');
+const toggle = document.getElementById('mobile-menu');
 const navLinks = document.querySelector('.nav-links');
+const navbar = document.querySelector('nav');
 
-mobileMenu.addEventListener('click', () => {
+toggle.addEventListener('click', () => {
   navLinks.classList.toggle('active');
+  navbar.classList.toggle('menu-open'); // adiciona/remover a cor da navbar
+  toggle.textContent = navLinks.classList.contains('active') ? 'Fechar' : 'Menu';
 });
 </script>
 
