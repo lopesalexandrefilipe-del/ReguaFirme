@@ -70,20 +70,74 @@ nav {
 .nav-links li a:hover {
   color: var(--cor-principal);
 }
+#menu-toggle {
+  display: none;
+  font-size: 26px;
+  color: white;
+  cursor: pointer;
+}
 
-/* RESPONSIVO: mantém horizontal no mobile */
+/* MOBILE */
 @media (max-width: 768px) {
+
+ nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--cor-escura);
+  padding: 10px 20px;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #d4af37;
+
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .nav-links li {
+    padding: 10px 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  #menu-toggle {
+    display: block;
+    position: relative; /* 👈 MUITO IMPORTANTE */
+    right: 40px;
+  }
+}
+ /* RESPONSIVO: mantém horizontal no mobile */
+/* <!-- @media (max-width: 768px) {
   .nav-links {
     flex-direction: row;
     gap: 15px;
     font-size: 0.9rem;
     margin-right: 80px; /* empurra os links para a direita */
-  }
-
+ /* } */ 
+/*
   .logo-nav {
     height: 45px;
   }
-}
+/* } */ 
 
 /* HEADER */
 header {
@@ -228,6 +282,23 @@ h2 {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
 }
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+
+.whatsapp:hover {
+  transform: scale(1.1);
+}
 
 .sobre-galeria img {
   width: 100%;
@@ -257,7 +328,62 @@ footer {
   margin-top: 30px;
   border-radius: 0 0 15px 15px;
 }
+.obras {
+  text-align: center;
+}
 
+.antes-depois {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.obra {
+  background: white;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.obra:hover {
+  transform: translateY(-5px);
+}
+
+.comparacao {
+  display: flex;
+  gap: 10px;
+}
+
+.img-box {
+  position: relative;
+  width: 50%;
+}
+
+.img-box img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  background: #f5f5f5; /* opcional, para não ficar branco */
+}
+.img-box span {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #d4af37;
+  color: white;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.obra {
+  border: 2px solid #d4af37;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
 
 </style>
 </head>
@@ -269,9 +395,10 @@ footer {
     <a href="#inicio">
       <img src="7.png" alt="Régua Firme" class="logo-nav">
     </a>
-    
+    <div id="menu-toggle">☰</div>
     <ul class="nav-links">
       <li><a href="#inicio">Início</a></li>
+      <li><a href="#obras">Obras Realizadas</a></li>
       <li><a href="#servicos">Serviços</a></li>
       <li><a href="#sobre">Quem Somos</a></li>
       <li><a href="#contactos">Contactos</a></li>
@@ -295,6 +422,34 @@ footer {
     especializada na construção de casas novas, remodelações, capoto, pladur, acabamentos,
     decorações, pintura, pavimentos, arranjos exteriores e outros serviços relacionados.
   </p>
+</section>
+
+<section id="obras" class="obras">
+  <h2>Obras Realizadas</h2>
+
+  <div class="antes-depois">
+
+    <div class="obra">
+      <div class="comparacao">
+        <div class="img-box">
+          <span>ANTES</span>
+          <img src="casa3.jpeg" alt="Antes">
+        </div>
+
+        <div class="img-box">
+          <span>DEPOIS</span>
+          <img src="casa2.jpeg" alt="Depois">
+        </div>
+
+      </div>
+
+      <p>Execução de obra nova com aplicação de sistema ETICS (capoto) de 10 cm, garantindo elevado desempenho térmico e eficiência energética.
+Realização de coberturas com placas de PIR, assegurando isolamento térmico superior, complementadas com aplicação de telas impermeabilizantes para proteção duradoura contra infiltrações.
+Finalização com pintura exterior de alta qualidade, conferindo um acabamento moderno e resistente.</p>
+    </div>
+
+  </div>
+  
 </section>
 
 <!-- SERVIÇOS -->
@@ -347,6 +502,11 @@ footer {
     <p><strong>Telefone:</strong> +351 964 562 155</p>
     <p><strong>Email:</strong> geral@reguafirme.pt</p>
     <p><strong>Filipe Lopes</strong></p>
+<a class="whatsapp" 
+href="https://wa.me/351964562155?text=Olá,%20gostaria%20de%20pedir%20um%20orçamento" 
+target="_blank">
+  WhatsApp
+</a>
   </div>
   </section>
     <section>
@@ -373,15 +533,18 @@ footer {
 
 <!-- JAVASCRIPT MENU -->
 <script>
-const toggle = document.getElementById('mobile-menu');
+const toggle = document.getElementById('menu-toggle');
 const navLinks = document.querySelector('.nav-links');
-const navbar = document.querySelector('nav');
 
-toggle.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-  navbar.classList.toggle('menu-open'); // adiciona/remover a cor da navbar
-  toggle.textContent = navLinks.classList.contains('active') ? 'Fechar' : 'Menu';
-});
+// segurança: só executa se existir
+if (toggle && navLinks) {
+  toggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+
+    // muda ícone (menu / fechar)
+    toggle.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
+  });
+}
 </script>
 
 </body>
