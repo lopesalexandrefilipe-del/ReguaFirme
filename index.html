@@ -103,7 +103,9 @@ nav {
     top: 70px;
     left: 0;
     width: 100%;
-    background: #d4af37;
+   
+  background: rgba(30, 30, 30, 0.85);
+backdrop-filter: blur(8px);
 
     display: none;
     flex-direction: column;
@@ -535,16 +537,21 @@ target="_blank">
 <script>
 const toggle = document.getElementById('menu-toggle');
 const navLinks = document.querySelector('.nav-links');
+const links = document.querySelectorAll('.nav-links a');
 
-// segurança: só executa se existir
-if (toggle && navLinks) {
-  toggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+// abrir/fechar menu
+toggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  toggle.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
+});
 
-    // muda ícone (menu / fechar)
-    toggle.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
+// FECHAR MENU AO CLICAR NUM LINK
+links.forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    toggle.textContent = '☰';
   });
-}
+});
 </script>
 
 </body>
